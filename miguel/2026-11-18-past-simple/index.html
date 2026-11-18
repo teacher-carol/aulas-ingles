@@ -4,17 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Homework: Past Simple Verbs</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;font-family:Inter,sans-serif;background:#0e2b21;color:#1f2a25;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#0e2b21;color:#1f2a25;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%}
 button,.card{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .slide{display:none;position:absolute;top:0;left:0;right:0;bottom:0;padding:40px 20px calc(110px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch;background:#f6f2e7;overflow:auto;flex-direction:column;gap:18px}
 .slide.on{display:flex}
 .slide.dark{background:#133b2d;color:#f6f2e7}
-h1{font-family:'Space Grotesk';font-size:clamp(40px,7vw,72px);margin:0;line-height:1.05}
-h2{font-family:'Space Grotesk';font-size:clamp(30px,5vw,46px);margin:0}
+h1{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:clamp(40px,7vw,72px);margin:0;line-height:1.05}
+h2{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:clamp(30px,5vw,46px);margin:0}
 p{font-size:22px;line-height:1.45;margin:0}
 .k{font-size:15px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:#e8630a}
 .dark .k{color:#ffb36b}
@@ -24,22 +23,22 @@ p{font-size:22px;line-height:1.45;margin:0}
 .dark .card{background:#1e5442;color:#f6f2e7}
 .card::after{content:'🔊';position:absolute;top:10px;right:12px;font-size:18px}
 .card:active{transform:scale(.97)}
-.v{font-size:24px;font-weight:700}.p{font-size:30px;font-weight:800;color:#e8630a;font-family:'Space Grotesk'}
+.v{font-size:24px;font-weight:700}.p{font-size:30px;font-weight:800;color:#e8630a;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 .dark .p{color:#ffb36b}
 .q{background:#fff;color:#1f2a25;border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .dark .q{background:#1e5442;color:#f6f2e7}
 .q .t{font-size:22px;font-weight:700;min-width:150px}
-button.o{font:600 20px Inter;padding:9px 18px;border-radius:999px;border:2px solid #c9c0ab;background:#f6f2e7;color:#1f2a25;cursor:pointer}
+button.o{font:600 20px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 18px;border-radius:999px;border:2px solid #c9c0ab;background:#f6f2e7;color:#1f2a25;cursor:pointer}
 button.o.ok{background:#2fae66;border-color:#2fae66;color:#fff}
 button.o.bad{background:#e0453a;border-color:#e0453a;color:#fff}
-button.spk{font:700 20px Inter;padding:9px 16px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
-.score{font:700 22px 'Space Grotesk';color:#e8630a;min-height:28px}
+button.spk{font:700 20px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 16px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+.score{font:700 22px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#e8630a;min-height:28px}
 .dark .score{color:#ffb36b}
-.reset{font:600 16px Inter;padding:8px 14px;border-radius:10px;border:none;background:#1f2a25;color:#fff;cursor:pointer;align-self:flex-start}
+.reset{font:600 16px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:8px 14px;border-radius:10px;border:none;background:#1f2a25;color:#fff;cursor:pointer;align-self:flex-start}
 .dark .reset{background:#ffb36b;color:#1f2a25}
-.total{font:800 clamp(60px,12vw,120px) 'Space Grotesk';color:#ffb36b}
-.nav{position:fixed;bottom:0;left:0;right:0;height:calc(70px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#0e2b21;display:flex;align-items:center;justify-content:center;gap:20px;color:#f6f2e7;font:600 18px Inter;z-index:5}
-.nav button{font:700 18px Inter;padding:10px 22px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+.total{font:800 clamp(60px,12vw,120px) system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#ffb36b}
+.nav{position:fixed;bottom:0;left:0;right:0;height:calc(70px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#0e2b21;display:flex;align-items:center;justify-content:center;gap:20px;color:#f6f2e7;font:600 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;z-index:5}
+.nav button{font:700 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:10px 22px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
 </style>
 </head>
 <body>

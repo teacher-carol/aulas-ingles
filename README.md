@@ -23,6 +23,18 @@ https://<usuario>.github.io/aulas-ingles/miguel/2026-11-18-past-simple/
 - O arquivo sempre se chama `index.html`.
 - Nunca colocar sobrenome, telefone ou dados pessoais do aluno nos arquivos: o site é público.
 
+## Conteúdo e propriedade intelectual
+
+O site é público, então:
+
+- Todo o conteúdo é **original**: textos, frases, exercícios e histórias escritos para as aulas.
+- **Nada externo**: sem fontes da internet, imagens, músicas, vídeos, personagens ou trechos de livros, sites e materiais de outras plataformas. As páginas usam só as fontes do próprio celular e a voz do próprio aparelho.
+- Se um dia for indispensável usar algo de fora, só com licença que permita, e com o crédito na seção **Referências** abaixo.
+
+## Referências
+
+Nenhuma. Todo o conteúdo deste repositório é original.
+
 ## Progresso do aluno
 
 Cada atividade tem, na tela final:
