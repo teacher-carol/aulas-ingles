@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Level Up: New Verbs (homework)</title>
+<style>*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#0e2b21;color:#1f2a25;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%}
+button,.card{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.slide{display:none;position:absolute;top:0;left:0;right:0;bottom:0;padding:40px 24px calc(110px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch;background:#f6f2e7;overflow:auto;flex-direction:column;gap:18px}
+.slide.on{display:flex}
+.slide.dark{background:#133b2d;color:#f6f2e7}
+.slide.accent{background:#ff7a1a;color:#1c1a17}
+.wrap{max-width:1100px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1{font-size:clamp(40px,7vw,72px);margin:0;line-height:1.05}
+h2{font-size:clamp(28px,5vw,46px);margin:0;line-height:1.15}
+h3{font-size:24px;margin:0}
+p,li{font-size:22px;line-height:1.45;margin:0}
+.k{font-size:15px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:#e8630a}
+.dark .k{color:#ffb36b}.accent .k{color:#1c1a17}
+.tip{font-size:18px;opacity:.8}
+.big{font-size:clamp(24px,3.5vw,34px);font-weight:700;line-height:1.35}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.cards{display:flex;gap:14px;flex-wrap:wrap}
+.box{flex:1;min-width:200px;background:#fff;color:#1f2a25;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.dark .box{background:#1e5442;color:#f6f2e7}
+.box.bad{border:4px solid #e0453a}.box.good{border:4px solid #2fae66}
+.card{background:#fff;color:#1f2a25;border-radius:18px;padding:18px;cursor:pointer;position:relative}
+.dark .card{background:#1e5442;color:#f6f2e7}
+.card::after{content:'🔊';position:absolute;top:10px;right:12px;font-size:18px}
+.card:active{transform:scale(.97)}
+.v{font-size:22px;font-weight:700;padding-right:22px}.p{font-size:28px;font-weight:800;color:#e8630a}
+.dark .p{color:#ffb36b}
+table{border-collapse:collapse;background:#fff;color:#1f2a25;border-radius:16px;overflow:hidden;width:100%;max-width:700px}
+td,th{font-size:24px;padding:12px 18px;border-bottom:2px solid #e4dccb;text-align:left}
+th{color:#e8630a}
+.q{background:#fff;color:#1f2a25;border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dark .q{background:#1e5442;color:#f6f2e7}
+.q .t{font-size:21px;font-weight:700;flex:1 1 100%}
+button.o{font:600 19px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 16px;border-radius:999px;border:2px solid #c9c0ab;background:#f6f2e7;color:#1f2a25;cursor:pointer}
+button.o.ok{background:#2fae66;border-color:#2fae66;color:#fff}
+button.o.bad{background:#e0453a;border-color:#e0453a;color:#fff}
+.story{background:#fff;color:#1f2a25;border-radius:18px;padding:22px;font-size:22px;line-height:2}
+.dark .story{background:#1e5442;color:#f6f2e7}
+.story .q{display:inline-flex;padding:4px;gap:4px;background:transparent;vertical-align:middle}
+.story button.o{font-size:16px;padding:4px 10px}
+button.spk,button.listen{font:700 19px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 16px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+.score{font:700 22px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#e8630a;min-height:28px}
+.dark .score{color:#ffb36b}
+.reset{font:600 16px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:8px 14px;border-radius:10px;border:none;background:#1f2a25;color:#fff;cursor:pointer;align-self:flex-start}
+.dark .reset{background:#ffb36b;color:#1f2a25}
+.total{font:800 clamp(60px,12vw,120px) system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#ffb36b;margin:0}
+.nav{position:fixed;bottom:0;left:0;right:0;height:calc(70px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#0e2b21;display:flex;align-items:center;justify-content:center;gap:20px;color:#f6f2e7;font:600 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;z-index:5}
+.nav button{font:700 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:10px 22px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+</style>
+</head>
+<body data-key="tarefa:2026-12-08-new-verbs" data-student="Miguel">
+<section class="slide dark"><div class="wrap">
+<p class="k">Homework · Past</p>
+<h1>Level up training 🎮</h1>
+<p>1. Listen to the new verbs and repeat out loud.</p><p>2. Play the 4 games.</p><p>3. Show your final score to your mom! 📸</p><p class="tip">🔊 Turn on the sound of your phone.</p>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">New verbs</p>
+<h2>8 new irregular verbs</h2>
+<p class="tip">🔊 Click a card to listen. Repeat out loud!</p><div class="grid">
+<div class="card" data-say="make... made"><div class="v">make</div><div class="p">made</div></div>
+<div class="card" data-say="get... got"><div class="v">get</div><div class="p">got</div></div>
+<div class="card" data-say="come... came"><div class="v">come</div><div class="p">came</div></div>
+<div class="card" data-say="take... took"><div class="v">take</div><div class="p">took</div></div>
+<div class="card" data-say="buy... bought"><div class="v">buy</div><div class="p">bought</div></div>
+<div class="card" data-say="sleep... slept"><div class="v">sleep</div><div class="p">slept</div></div>
+<div class="card" data-say="drink... drank"><div class="v">drink</div><div class="p">drank</div></div>
+<div class="card" data-say="give... gave"><div class="v">give</div><div class="p">gave</div></div>
+</div>
+</div></section>
+<section class="slide " data-name="Choose the past"><div class="wrap">
+<p class="k">Game 1</p>
+<h2>Choose the past form</h2>
+<p class="score"></p>
+<div class="q" data-speak="bought"><span class="t">buy</span><button class="o">boughted</button><button class="o" data-ok>bought</button><button class="o">buyed</button></div>
+<div class="q" data-speak="slept"><span class="t">sleep</span><button class="o">sleeped</button><button class="o" data-ok>slept</button><button class="o">slep</button></div>
+<div class="q" data-speak="took"><span class="t">take</span><button class="o">tooked</button><button class="o">taked</button><button class="o" data-ok>took</button></div>
+<div class="q" data-speak="made"><span class="t">make</span><button class="o">mad</button><button class="o">maked</button><button class="o" data-ok>made</button></div>
+<div class="q" data-speak="drank"><span class="t">drink</span><button class="o">drinks</button><button class="o" data-ok>drank</button><button class="o">drinked</button></div>
+<div class="q" data-speak="gave"><span class="t">give</span><button class="o">gived</button><button class="o">gaved</button><button class="o" data-ok>gave</button></div>
+<div class="q" data-speak="came"><span class="t">come</span><button class="o">comed</button><button class="o" data-ok>came</button><button class="o">comes</button></div>
+<div class="q" data-speak="got"><span class="t">get</span><button class="o">getted</button><button class="o" data-ok>got</button><button class="o">gotted</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide dark" data-name="It is the past of"><div class="wrap">
+<p class="k">Game 2</p>
+<h2>It is the past of...</h2>
+<p class="score"></p>
+<div class="q" data-speak="buy"><span class="t">bought</span><button class="o">bring</button><button class="o" data-ok>buy</button></div>
+<div class="q" data-speak="sleep"><span class="t">slept</span><button class="o">sit</button><button class="o" data-ok>sleep</button></div>
+<div class="q" data-speak="take"><span class="t">took</span><button class="o">talk</button><button class="o" data-ok>take</button></div>
+<div class="q" data-speak="give"><span class="t">gave</span><button class="o">go</button><button class="o" data-ok>give</button></div>
+<div class="q" data-speak="come"><span class="t">came</span><button class="o">make</button><button class="o" data-ok>come</button></div>
+<div class="q" data-speak="drink"><span class="t">drank</span><button class="o">drive</button><button class="o" data-ok>drink</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide " data-name="Listen"><div class="wrap">
+<p class="k">Game 3 · Listen 🎧</p>
+<h2>Listen and choose</h2>
+<p class="tip">Click 🔊, then choose the word you heard.</p>
+<p class="score"></p>
+<div class="q" data-speak="bought"><button class="spk" data-say="bought">🔊 1</button><button class="o">but</button><button class="o" data-ok>bought</button><button class="o">boat</button></div>
+<div class="q" data-speak="came"><button class="spk" data-say="came">🔊 2</button><button class="o">game</button><button class="o">come</button><button class="o" data-ok>came</button></div>
+<div class="q" data-speak="took"><button class="spk" data-say="took">🔊 3</button><button class="o">look</button><button class="o" data-ok>took</button><button class="o">take</button></div>
+<div class="q" data-speak="slept"><button class="spk" data-say="slept">🔊 4</button><button class="o">sleep</button><button class="o">slip</button><button class="o" data-ok>slept</button></div>
+<div class="q" data-speak="made"><button class="spk" data-say="made">🔊 5</button><button class="o">make</button><button class="o">mad</button><button class="o" data-ok>made</button></div>
+<div class="q" data-speak="gave"><button class="spk" data-say="gave">🔊 6</button><button class="o">game</button><button class="o">give</button><button class="o" data-ok>gave</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide dark" data-name="Time words"><div class="wrap">
+<p class="k">Game 4</p>
+<h2>Complete with the time word</h2>
+<p class="score"></p>
+<div class="q" data-speak="yesterday"><span class="t">I drank juice ___.</span><button class="o">tomorrow</button><button class="o">now</button><button class="o" data-ok>yesterday</button></div>
+<div class="q" data-speak="night"><span class="t">We came home last ___.</span><button class="o">now</button><button class="o">tomorrow</button><button class="o" data-ok>night</button></div>
+<div class="q" data-speak="ago"><span class="t">He bought a ball three days ___.</span><button class="o">next</button><button class="o" data-ok>ago</button><button class="o">last</button></div>
+<div class="q" data-speak="last"><span class="t">They made a cake ___ Sunday.</span><button class="o">next</button><button class="o">ago</button><button class="o" data-ok>last</button></div>
+<div class="q" data-speak="week"><span class="t">I slept at a friend's house last ___.</span><button class="o">tomorrow</button><button class="o" data-ok>week</button><button class="o">today</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide dark"><div class="wrap">
+<p class="k">Final score</p>
+<h2>Congratulations, champion! 🏆</h2>
+<p class="total" id="total">0</p><p id="msg" class="big"></p>
+<p>You leveled up! 8 new verbs in your English! 💪</p><p id="best" class="tip"></p>
+<button id="send" class="spk" style="align-self:flex-start;font-size:22px;padding:14px 22px">📲 Send my score to the teacher</button>
+<p>Show this screen to your mom! 📸</p><p class="tip">Want a better score? Go back and click "Try again".</p>
+</div></section>
+<div class="nav"><button id="prev">← Back</button><span id="num"></span><button id="next">Next →</button></div>
+<script>
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0;
+function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i)});document.getElementById('num').textContent=(i+1)+' / '+S.length;total();S[i].scrollTop=0;}
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);});
+var VOICES=[];function loadV(){try{VOICES=speechSynthesis.getVoices()||[];}catch(e){}}
+if(window.speechSynthesis){loadV();speechSynthesis.onvoiceschanged=loadV;}
+function say(t){if(!window.speechSynthesis||!t)return;try{if(speechSynthesis.speaking||speechSynthesis.pending)speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=0.85;var v=null;for(var k=0;k<VOICES.length;k++){if(VOICES[k].lang&&VOICES[k].lang.replace('_','-').indexOf('en-US')===0){v=VOICES[k];break;}}if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+[].forEach.call(document.querySelectorAll('.card'),function(c){c.onclick=function(){say(c.getAttribute('data-say'))}});
+[].forEach.call(document.querySelectorAll('button.spk,button.listen'),function(b){b.onclick=function(){say(b.getAttribute('data-say'))}});
+function score(s){var qs=s.querySelectorAll('.q'),el=s.querySelector('.score'),ok=0,done=0;[].forEach.call(qs,function(q){if(q.dataset.done){done++;if(q.dataset.done==='ok')ok++;}});if(el)el.textContent=done?('Score: '+ok+' / '+qs.length):'';}
+function gameScores(){var out=[],n=0;S.forEach(function(s){var qs=s.querySelectorAll('.q');if(!qs.length)return;n++;var ok=0;[].forEach.call(qs,function(q){if(q.dataset.done==='ok')ok++;});out.push({g:n,name:s.getAttribute('data-name')||('Game '+n),ok:ok,t:qs.length});});return out;}
+function total(){var el=document.getElementById('total');if(!el)return;var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});el.textContent=ok+' / '+t;var m=document.getElementById('msg');if(m){var r=t?ok/t:0;m.textContent=r>=0.87?'⭐ Amazing! You are a star!':r>=0.62?'⚽ Great game! Almost perfect!':r>=0.3?'👏 Good job! Practice a little more and try again!':'🚀 Play the games and come back to see your score!';}if(i===S.length-1)saveBest(ok,t);}
+var KEY=document.body.getAttribute('data-key');
+function saveBest(ok,t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');if(!d.best||ok>d.best){d.best=ok;localStorage.setItem(KEY,JSON.stringify(d));}showBest(t);}catch(e){}}
+function showBest(t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');var el=document.getElementById('best');if(el&&d.best)el.textContent='🏅 Your best score: '+d.best+(t?' / '+t:'');}catch(e){}}
+var TEACHER_PHONE=''; // WhatsApp da professora (opcional): só números, ex: 5583999999999
+var sendB=document.getElementById('send');
+if(sendB)sendB.onclick=function(){var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});var txt='📚 '+document.body.getAttribute('data-student')+' | '+document.title+'\n'+gs.map(function(x){return x.name+': '+x.ok+'/'+x.t}).join('\n')+'\nTotal: '+ok+'/'+t+' ✅';location.href='https://wa.me/'+TEACHER_PHONE+'?text='+encodeURIComponent(txt);};
+[].forEach.call(document.querySelectorAll('.q'),function(q){[].forEach.call(q.querySelectorAll('button.o'),function(b){b.onclick=function(){
+  var right=b.hasAttribute('data-ok');b.classList.add(right?'ok':'bad');
+  if(!q.dataset.done)q.dataset.done=right?'ok':'bad';
+  if(right){[].forEach.call(q.querySelectorAll('button.o'),function(x){x.disabled=true});say(q.getAttribute('data-speak'));}
+  score(q.closest('.slide'));}})});
+[].forEach.call(document.querySelectorAll('.reset'),function(r){r.onclick=function(){var s=r.closest('.slide');[].forEach.call(s.querySelectorAll('.q'),function(q){delete q.dataset.done;[].forEach.call(q.querySelectorAll('button.o'),function(b){b.classList.remove('ok','bad');b.disabled=false;});});score(s);}});
+show(0);
+</script>
+</body>
+</html>

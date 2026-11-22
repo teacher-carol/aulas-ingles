@@ -10,6 +10,13 @@ nome-do-aluno/AAAA-MM-DD-tema/index.html
 
 Exemplo: `miguel/2026-11-18-past-simple/index.html`
 
+Cada aula tem duas páginas:
+
+- `aluno/AAAA-MM-DD-tema/` → **tarefa de casa** (o link que vai para o aluno)
+- `aluno/AAAA-MM-DD-tema/aula/` → **página da aula** (a professora compartilha a tela)
+
+A pasta `ferramentas/` tem o gerador das páginas (Python). Rodar `python3 ferramentas/miguel.py` recria as páginas do Miguel.
+
 Link que o aluno recebe:
 
 ```
