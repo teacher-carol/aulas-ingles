@@ -72,7 +72,7 @@ function saveBest(ok,t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');if
 function showBest(t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');var el=document.getElementById('best');if(el&&d.best)el.textContent='🏅 Your best score: '+d.best+(t?' / '+t:'');}catch(e){}}
 var TEACHER_PHONE=''; // WhatsApp da professora (opcional): só números, ex: 5583999999999
 var sendB=document.getElementById('send');
-if(sendB)sendB.onclick=function(){var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});var txt='📚 '+document.body.getAttribute('data-student')+' | '+document.title+'\n'+gs.map(function(x){return x.name+': '+x.ok+'/'+x.t}).join('\n')+'\nTotal: '+ok+'/'+t+' ✅';location.href='https://wa.me/'+TEACHER_PHONE+'?text='+encodeURIComponent(txt);};
+if(sendB)sendB.onclick=function(){var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});var st=document.body.getAttribute('data-student')||'';var txt='📚 '+(st?st+' | ':'')+document.title+'\n'+gs.map(function(x){return x.name+': '+x.ok+'/'+x.t}).join('\n')+'\nTotal: '+ok+'/'+t+' ✅';location.href='https://wa.me/'+TEACHER_PHONE+'?text='+encodeURIComponent(txt);};
 [].forEach.call(document.querySelectorAll('.q'),function(q){[].forEach.call(q.querySelectorAll('button.o'),function(b){b.onclick=function(){
   var right=b.hasAttribute('data-ok');b.classList.add(right?'ok':'bad');
   if(!q.dataset.done)q.dataset.done=right?'ok':'bad';
@@ -131,8 +131,10 @@ def slide(s):
         out.append(s["html"])
     if s.get("cards"):
         out.append('<p class="tip">🔊 Click a card to listen. Repeat out loud!</p><div class="grid">')
-        for a, b in s["cards"]:
-            out.append(f'<div class="card" data-say="{E(a)}... {E(b)}"><div class="v">{E(a)}</div><div class="p">{E(b)}</div></div>')
+        for c in s["cards"]:
+            a, b = c[0], c[1]
+            say = c[2] if len(c) > 2 else f"{a}... {b}"
+            out.append(f'<div class="card" data-say="{E(say)}"><div class="v">{E(a)}</div><div class="p">{E(b)}</div></div>')
         out.append("</div>")
     if s.get("qs"):
         if s.get("tip"):
@@ -156,7 +158,10 @@ def slide(s):
         out.append(f'<p>{s["final"]}</p><p id="best" class="tip"></p>')
         if s.get("send", True):
             out.append('<button id="send" class="spk" style="align-self:flex-start;font-size:22px;padding:14px 22px">📲 Send my score to the teacher</button>')
-        out.append('<p>Show this screen to your mom! 📸</p><p class="tip">Want a better score? Go back and click "Try again".</p>')
+        show = s.get("show", "Show this screen to your mom! 📸")
+        if show:
+            out.append(f'<p>{show}</p>')
+        out.append('<p class="tip">Want a better score? Go back and click "Try again".</p>')
     if s.get("after"):
         out.append(s["after"])
     out.append("</div></section>")
@@ -169,6 +174,7 @@ def page(title, student, key, slides, path):
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{E(title)}</title>
 <style>{CSS}</style>

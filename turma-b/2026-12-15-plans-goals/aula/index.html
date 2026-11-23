@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plans and goals (aula)</title>
+<style>*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#0e2b21;color:#1f2a25;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%}
+button,.card{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.slide{display:none;position:absolute;top:0;left:0;right:0;bottom:0;padding:40px 24px calc(110px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch;background:#f6f2e7;overflow:auto;flex-direction:column;gap:18px}
+.slide.on{display:flex}
+.slide.dark{background:#133b2d;color:#f6f2e7}
+.slide.accent{background:#ff7a1a;color:#1c1a17}
+.wrap{max-width:1100px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1{font-size:clamp(40px,7vw,72px);margin:0;line-height:1.05}
+h2{font-size:clamp(28px,5vw,46px);margin:0;line-height:1.15}
+h3{font-size:24px;margin:0}
+p,li{font-size:22px;line-height:1.45;margin:0}
+.k{font-size:15px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:#e8630a}
+.dark .k{color:#ffb36b}.accent .k{color:#1c1a17}
+.tip{font-size:18px;opacity:.8}
+.big{font-size:clamp(24px,3.5vw,34px);font-weight:700;line-height:1.35}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.cards{display:flex;gap:14px;flex-wrap:wrap}
+.box{flex:1;min-width:200px;background:#fff;color:#1f2a25;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.dark .box{background:#1e5442;color:#f6f2e7}
+.box.bad{border:4px solid #e0453a}.box.good{border:4px solid #2fae66}
+.card{background:#fff;color:#1f2a25;border-radius:18px;padding:18px;cursor:pointer;position:relative}
+.dark .card{background:#1e5442;color:#f6f2e7}
+.card::after{content:'🔊';position:absolute;top:10px;right:12px;font-size:18px}
+.card:active{transform:scale(.97)}
+.v{font-size:22px;font-weight:700;padding-right:22px}.p{font-size:28px;font-weight:800;color:#e8630a}
+.dark .p{color:#ffb36b}
+table{border-collapse:collapse;background:#fff;color:#1f2a25;border-radius:16px;overflow:hidden;width:100%;max-width:700px}
+td,th{font-size:24px;padding:12px 18px;border-bottom:2px solid #e4dccb;text-align:left}
+th{color:#e8630a}
+.q{background:#fff;color:#1f2a25;border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dark .q{background:#1e5442;color:#f6f2e7}
+.q .t{font-size:21px;font-weight:700;flex:1 1 100%}
+button.o{font:600 19px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 16px;border-radius:999px;border:2px solid #c9c0ab;background:#f6f2e7;color:#1f2a25;cursor:pointer}
+button.o.ok{background:#2fae66;border-color:#2fae66;color:#fff}
+button.o.bad{background:#e0453a;border-color:#e0453a;color:#fff}
+.story{background:#fff;color:#1f2a25;border-radius:18px;padding:22px;font-size:22px;line-height:2}
+.dark .story{background:#1e5442;color:#f6f2e7}
+.story .q{display:inline-flex;padding:4px;gap:4px;background:transparent;vertical-align:middle}
+.story button.o{font-size:16px;padding:4px 10px}
+button.spk,button.listen{font:700 19px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 16px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+.score{font:700 22px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#e8630a;min-height:28px}
+.dark .score{color:#ffb36b}
+.reset{font:600 16px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:8px 14px;border-radius:10px;border:none;background:#1f2a25;color:#fff;cursor:pointer;align-self:flex-start}
+.dark .reset{background:#ffb36b;color:#1f2a25}
+.total{font:800 clamp(60px,12vw,120px) system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#ffb36b;margin:0}
+.nav{position:fixed;bottom:0;left:0;right:0;height:calc(70px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#0e2b21;display:flex;align-items:center;justify-content:center;gap:20px;color:#f6f2e7;font:600 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;z-index:5}
+.nav button{font:700 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:10px 22px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+</style>
+</head>
+<body data-key="aula:b:2026-12-15-plans-goals" data-student="">
+<section class="slide dark"><div class="wrap">
+<p class="k">English class · Future</p>
+<h1>Plans and goals 🎯</h1>
+<p class="big">going to × will</p>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">Warm-up · 5 min</p>
+<h2>Your experiences audio</h2>
+<div class="cards"><div class="box "><h3>Tell me one thing you have never done.</h3></div><div class="box "><h3>Is there something you want to try one day?</h3></div><div class="box "><h3>What are you going to do this weekend?</h3></div></div>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">Grammar</p>
+<h2>going to or will?</h2>
+<div class="cards"><div class="box "><p class="big"><b>going to</b> = a plan you already decided</p></div><div class="box "><p class="big"><b>will</b> = a decision NOW, a prediction or a promise</p></div></div>
+<p class="tip">🔊 Click a card to listen. Repeat out loud!</p><div class="grid">
+<div class="card" data-say="I&#x27;m going to study more."><div class="v">I&#x27;m going to study more.</div><div class="p">plan ✔</div></div>
+<div class="card" data-say="I think it will rain."><div class="v">I think it will rain.</div><div class="p">prediction 🔮</div></div>
+<div class="card" data-say="I&#x27;ll help you!"><div class="v">I&#x27;ll help you!</div><div class="p">decision now ⚡</div></div>
+<div class="card" data-say="I&#x27;ll call you later. I promise."><div class="v">I&#x27;ll call you later. I promise.</div><div class="p">promise 🤝</div></div>
+</div>
+</div></section>
+<section class="slide dark"><div class="wrap">
+<p class="k">Form</p>
+<div class="cards"><div class="box bad"><p style="font-weight:800;color:#e0453a">❌ WRONG</p><p class="big">I <b>going to</b> travel.</p><p class="big">I <b>will to</b> study.</p><p class="big">She <b>wills</b> help.</p></div><div class="box good"><p style="font-weight:800;color:#2fae66">✅ CORRECT</p><p class="big">I<b>'m going to</b> travel.</p><p class="big">I <b>will</b> study.</p><p class="big">She <b>will</b> help.</p></div></div>
+<h2>Be careful with the form!</h2>
+<p class="big">Negative: I'm <b>not</b> going to... · I <b>won't</b>...</p>
+</div></section>
+<section class="slide " data-name="going to or will"><div class="wrap">
+<p class="k">Exercise 1</p>
+<h2>going to or will?</h2>
+<p class="score"></p>
+<div class="q" data-speak="am going to"><span class="t">I bought the tickets. I ___ visit my aunt in January.</span><button class="o">will</button><button class="o" data-ok>am going to</button></div>
+<div class="q" data-speak="&#x27;ll"><span class="t">The phone is ringing! I ___ answer it.</span><button class="o">am going to</button><button class="o" data-ok>&#x27;ll</button></div>
+<div class="q" data-speak="is going to"><span class="t">Look at those clouds! It ___ rain.</span><button class="o">will</button><button class="o" data-ok>is going to</button></div>
+<div class="q" data-speak="won&#x27;t"><span class="t">Don't worry, I ___ tell anyone. I promise!</span><button class="o">am not going to</button><button class="o" data-ok>won&#x27;t</button></div>
+<div class="q" data-speak="will"><span class="t">I think people ___ use phones less in the future.</span><button class="o">are going to</button><button class="o" data-ok>will</button></div>
+<div class="q" data-speak="are going to"><span class="t">We ___ start a gym next month. We already paid!</span><button class="o">will</button><button class="o" data-ok>are going to</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide dark" data-name="Which is correct"><div class="wrap">
+<p class="k">Exercise 2</p>
+<h2>Which sentence is correct?</h2>
+<p class="score"></p>
+<div class="q" data-speak="I&#x27;m going to study every day."><button class="o">I going to study every day.</button><button class="o" data-ok>I&#x27;m going to study every day.</button><button class="o">I&#x27;m going study every day.</button></div>
+<div class="q" data-speak="She will travel next year."><button class="o">She wills travel next year.</button><button class="o" data-ok>She will travel next year.</button><button class="o">She will to travel next year.</button></div>
+<div class="q" data-speak="Are you going to work tomorrow?"><button class="o">Do you going to work tomorrow?</button><button class="o" data-ok>Are you going to work tomorrow?</button><button class="o">You are going to work tomorrow?</button></div>
+<div class="q" data-speak="I won&#x27;t use my phone at dinner."><button class="o">I won&#x27;t to use my phone at dinner.</button><button class="o">I willn&#x27;t use my phone at dinner.</button><button class="o" data-ok>I won&#x27;t use my phone at dinner.</button></div>
+<div class="q" data-speak="What are you going to do?"><button class="o">What are you going do?</button><button class="o" data-ok>What are you going to do?</button><button class="o">What you are going to do?</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide " data-name="Dialogue"><div class="wrap">
+<p class="k">Exercise 3</p>
+<h2>Complete the conversation</h2>
+<p class="score"></p><div class="story">
+Ana: What 
+<div class="q"><button class="o">do</button><button class="o" data-ok>are</button></div>
+ you going to do on vacation? 
+Bia: I&#x27;m going 
+<div class="q"><button class="o">for</button><button class="o" data-ok>to</button></div>
+ visit my grandparents. And you? 
+Ana: I don&#x27;t know. Maybe I 
+<div class="q"><button class="o">am going to</button><button class="o" data-ok>will</button></div>
+ stay home. 
+Bia: Come with me! My grandma 
+<div class="q"><button class="o">wills</button><button class="o" data-ok>will</button></div>
+ love you! 
+Ana: Really? OK, I&#x27;ll 
+<div class="q"><button class="o">to ask</button><button class="o" data-ok>ask</button></div>
+ my parents tonight!
+</div>
+<button class="listen" data-say="Ana: What are you going to do on vacation? Bia: I&#x27;m going to visit my grandparents. And you? Ana: I don&#x27;t know. Maybe I will stay home. Bia: Come with me! My grandma will love you! Ana: Really? OK, I&#x27;ll ask my parents tonight!">🔊 Listen to the answer</button>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide accent"><div class="wrap">
+<p class="k">Speaking · 10 min</p>
+<h2>Your vacation and your goals 🗓️</h2>
+<div class="cards"><div class="box "><h3>What are you going to do on vacation?</h3></div><div class="box "><h3>What are your goals for 2027?</h3></div><div class="box "><h3>What will be different in your life in 5 years?</h3></div><div class="box "><h3>Which habit are you going to change?</h3></div></div><p>Use: I'm going to... · I think I'll... · I'm not going to... · I won't...</p>
+</div></section>
+<section class="slide dark"><div class="wrap">
+<p class="k">Game · 5 min</p>
+<h2>Predict the future 🔮</h2>
+<p>Agree or disagree? Explain why.</p><div class="cards"><div class="box "><p class="big">In 2050, people will work only 4 days a week.</p></div><div class="box "><p class="big">Phones will disappear.</p></div><div class="box "><p class="big">Everyone will speak English.</p></div></div>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">Wrap-up</p>
+<h2>Today's summary 🎯</h2>
+<div class="cards"><div class="box "><h3>going to</h3><p>plans: I'm going to travel.</p></div><div class="box "><h3>will</h3><p>now / prediction / promise: I'll help you.</p></div><div class="box "><h3>Negative</h3><p>I'm not going to · I won't</p></div></div>
+</div></section>
+<div class="nav"><button id="prev">← Back</button><span id="num"></span><button id="next">Next →</button></div>
+<script>
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0;
+function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i)});document.getElementById('num').textContent=(i+1)+' / '+S.length;total();S[i].scrollTop=0;}
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);});
+var VOICES=[];function loadV(){try{VOICES=speechSynthesis.getVoices()||[];}catch(e){}}
+if(window.speechSynthesis){loadV();speechSynthesis.onvoiceschanged=loadV;}
+function say(t){if(!window.speechSynthesis||!t)return;try{if(speechSynthesis.speaking||speechSynthesis.pending)speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=0.85;var v=null;for(var k=0;k<VOICES.length;k++){if(VOICES[k].lang&&VOICES[k].lang.replace('_','-').indexOf('en-US')===0){v=VOICES[k];break;}}if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+[].forEach.call(document.querySelectorAll('.card'),function(c){c.onclick=function(){say(c.getAttribute('data-say'))}});
+[].forEach.call(document.querySelectorAll('button.spk,button.listen'),function(b){b.onclick=function(){say(b.getAttribute('data-say'))}});
+function score(s){var qs=s.querySelectorAll('.q'),el=s.querySelector('.score'),ok=0,done=0;[].forEach.call(qs,function(q){if(q.dataset.done){done++;if(q.dataset.done==='ok')ok++;}});if(el)el.textContent=done?('Score: '+ok+' / '+qs.length):'';}
+function gameScores(){var out=[],n=0;S.forEach(function(s){var qs=s.querySelectorAll('.q');if(!qs.length)return;n++;var ok=0;[].forEach.call(qs,function(q){if(q.dataset.done==='ok')ok++;});out.push({g:n,name:s.getAttribute('data-name')||('Game '+n),ok:ok,t:qs.length});});return out;}
+function total(){var el=document.getElementById('total');if(!el)return;var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});el.textContent=ok+' / '+t;var m=document.getElementById('msg');if(m){var r=t?ok/t:0;m.textContent=r>=0.87?'⭐ Amazing! You are a star!':r>=0.62?'⚽ Great game! Almost perfect!':r>=0.3?'👏 Good job! Practice a little more and try again!':'🚀 Play the games and come back to see your score!';}if(i===S.length-1)saveBest(ok,t);}
+var KEY=document.body.getAttribute('data-key');
+function saveBest(ok,t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');if(!d.best||ok>d.best){d.best=ok;localStorage.setItem(KEY,JSON.stringify(d));}showBest(t);}catch(e){}}
+function showBest(t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');var el=document.getElementById('best');if(el&&d.best)el.textContent='🏅 Your best score: '+d.best+(t?' / '+t:'');}catch(e){}}
+var TEACHER_PHONE=''; // WhatsApp da professora (opcional): só números, ex: 5583999999999
+var sendB=document.getElementById('send');
+if(sendB)sendB.onclick=function(){var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});var st=document.body.getAttribute('data-student')||'';var txt='📚 '+(st?st+' | ':'')+document.title+'\n'+gs.map(function(x){return x.name+': '+x.ok+'/'+x.t}).join('\n')+'\nTotal: '+ok+'/'+t+' ✅';location.href='https://wa.me/'+TEACHER_PHONE+'?text='+encodeURIComponent(txt);};
+[].forEach.call(document.querySelectorAll('.q'),function(q){[].forEach.call(q.querySelectorAll('button.o'),function(b){b.onclick=function(){
+  var right=b.hasAttribute('data-ok');b.classList.add(right?'ok':'bad');
+  if(!q.dataset.done)q.dataset.done=right?'ok':'bad';
+  if(right){[].forEach.call(q.querySelectorAll('button.o'),function(x){x.disabled=true});say(q.getAttribute('data-speak'));}
+  score(q.closest('.slide'));}})});
+[].forEach.call(document.querySelectorAll('.reset'),function(r){r.onclick=function(){var s=r.closest('.slide');[].forEach.call(s.querySelectorAll('.q'),function(q){delete q.dataset.done;[].forEach.call(q.querySelectorAll('button.o'),function(b){b.classList.remove('ok','bad');b.disabled=false;});});score(s);}});
+show(0);
+</script>
+</body>
+</html>

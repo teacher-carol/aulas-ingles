@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Travel stories (aula)</title>
+<style>*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#0e2b21;color:#1f2a25;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%}
+button,.card{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.slide{display:none;position:absolute;top:0;left:0;right:0;bottom:0;padding:40px 24px calc(110px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch;background:#f6f2e7;overflow:auto;flex-direction:column;gap:18px}
+.slide.on{display:flex}
+.slide.dark{background:#133b2d;color:#f6f2e7}
+.slide.accent{background:#ff7a1a;color:#1c1a17}
+.wrap{max-width:1100px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1{font-size:clamp(40px,7vw,72px);margin:0;line-height:1.05}
+h2{font-size:clamp(28px,5vw,46px);margin:0;line-height:1.15}
+h3{font-size:24px;margin:0}
+p,li{font-size:22px;line-height:1.45;margin:0}
+.k{font-size:15px;letter-spacing:3px;text-transform:uppercase;font-weight:800;color:#e8630a}
+.dark .k{color:#ffb36b}.accent .k{color:#1c1a17}
+.tip{font-size:18px;opacity:.8}
+.big{font-size:clamp(24px,3.5vw,34px);font-weight:700;line-height:1.35}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.cards{display:flex;gap:14px;flex-wrap:wrap}
+.box{flex:1;min-width:200px;background:#fff;color:#1f2a25;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.dark .box{background:#1e5442;color:#f6f2e7}
+.box.bad{border:4px solid #e0453a}.box.good{border:4px solid #2fae66}
+.card{background:#fff;color:#1f2a25;border-radius:18px;padding:18px;cursor:pointer;position:relative}
+.dark .card{background:#1e5442;color:#f6f2e7}
+.card::after{content:'🔊';position:absolute;top:10px;right:12px;font-size:18px}
+.card:active{transform:scale(.97)}
+.v{font-size:22px;font-weight:700;padding-right:22px}.p{font-size:28px;font-weight:800;color:#e8630a}
+.dark .p{color:#ffb36b}
+table{border-collapse:collapse;background:#fff;color:#1f2a25;border-radius:16px;overflow:hidden;width:100%;max-width:700px}
+td,th{font-size:24px;padding:12px 18px;border-bottom:2px solid #e4dccb;text-align:left}
+th{color:#e8630a}
+.q{background:#fff;color:#1f2a25;border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dark .q{background:#1e5442;color:#f6f2e7}
+.q .t{font-size:21px;font-weight:700;flex:1 1 100%}
+button.o{font:600 19px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 16px;border-radius:999px;border:2px solid #c9c0ab;background:#f6f2e7;color:#1f2a25;cursor:pointer}
+button.o.ok{background:#2fae66;border-color:#2fae66;color:#fff}
+button.o.bad{background:#e0453a;border-color:#e0453a;color:#fff}
+.story{background:#fff;color:#1f2a25;border-radius:18px;padding:22px;font-size:22px;line-height:2}
+.dark .story{background:#1e5442;color:#f6f2e7}
+.story .q{display:inline-flex;padding:4px;gap:4px;background:transparent;vertical-align:middle}
+.story button.o{font-size:16px;padding:4px 10px}
+button.spk,button.listen{font:700 19px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:9px 16px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+.score{font:700 22px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#e8630a;min-height:28px}
+.dark .score{color:#ffb36b}
+.reset{font:600 16px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:8px 14px;border-radius:10px;border:none;background:#1f2a25;color:#fff;cursor:pointer;align-self:flex-start}
+.dark .reset{background:#ffb36b;color:#1f2a25}
+.total{font:800 clamp(60px,12vw,120px) system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#ffb36b;margin:0}
+.nav{position:fixed;bottom:0;left:0;right:0;height:calc(70px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:#0e2b21;display:flex;align-items:center;justify-content:center;gap:20px;color:#f6f2e7;font:600 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;z-index:5}
+.nav button{font:700 18px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:10px 22px;border-radius:12px;border:none;background:#ff7a1a;color:#1c1a17;cursor:pointer}
+</style>
+</head>
+<body data-key="aula:b:2026-12-01-travel-stories" data-student="">
+<section class="slide dark"><div class="wrap">
+<p class="k">English class · Past Simple</p>
+<h1>Travel stories ✈️</h1>
+<p class="big">was / were · ago · first, then... · the -ed sound</p>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">Warm-up · 5 min</p>
+<h2>Your audio mission</h2>
+<div class="cards"><div class="box "><h3>Tell me again: what did you do last weekend?</h3></div><div class="box "><h3>Where was your last trip?</h3></div><div class="box "><h3>Beach or mountains?</h3></div><div class="box "><h3>Plane, bus or car?</h3></div></div>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">Grammar</p>
+<h2>was / were + time expressions</h2>
+<table><tr><th></th><th>Past of be</th></tr><tr><td>I / he / she / it</td><td><b>was</b> / wasn't</td></tr><tr><td>you / we / they</td><td><b>were</b> / weren't</td></tr></table><div class="cards"><div class="box "><p class="big"><b>last</b> summer / last year</p></div><div class="box "><p class="big">two years <b>ago</b></p></div><div class="box "><p class="big"><b>in</b> 2023 / <b>in</b> July</p></div></div><p>⚠️ Not: <s>in last year</s> · <s>ago two years</s></p>
+</div></section>
+<section class="slide dark" data-name="Time words"><div class="wrap">
+<p class="k">Exercise 1</p>
+<h2>last, ago or in?</h2>
+<p class="score"></p>
+<div class="q" data-speak="ago"><span class="t">I went to Recife three years ___.</span><button class="o">last</button><button class="o" data-ok>ago</button><button class="o">in</button></div>
+<div class="q" data-speak="last"><span class="t">We traveled ___ summer.</span><button class="o">ago</button><button class="o" data-ok>last</button><button class="o">in</button></div>
+<div class="q" data-speak="in"><span class="t">My parents visited Natal ___ 2022.</span><button class="o">last</button><button class="o" data-ok>in</button><button class="o">ago</button></div>
+<div class="q" data-speak="was"><span class="t">The trip ___ amazing!</span><button class="o">did</button><button class="o">were</button><button class="o" data-ok>was</button></div>
+<div class="q" data-speak="were"><span class="t">The hotels ___ very expensive.</span><button class="o">was</button><button class="o">did</button><button class="o" data-ok>were</button></div>
+<div class="q" data-speak="wasn&#x27;t"><span class="t">I ___ at home last weekend.</span><button class="o">didn&#x27;t</button><button class="o" data-ok>wasn&#x27;t</button><button class="o">weren&#x27;t</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">Tell a story</p>
+<h2>Connect your story 🔗</h2>
+<div class="cards"><div class="box "><p class="big">First, ...</p></div><div class="box "><p class="big">Then, ...</p></div><div class="box "><p class="big">After that, ...</p></div><div class="box "><p class="big">Finally, ...</p></div></div><p>First, we took a bus. Then, we checked in at the hotel. After that, we went to the beach. Finally, we had dinner by the sea.</p>
+</div></section>
+<section class="slide dark"><div class="wrap">
+<p class="k">Pronunciation</p>
+<h2>The -ed sound 👂</h2>
+<p><b>/t/</b> after p, k, s, sh, ch · <b>/d/</b> after most other sounds · <b>/ɪd/</b> after t or d (an extra syllable!)</p>
+<p class="tip">🔊 Click a card to listen. Repeat out loud!</p><div class="grid">
+<div class="card" data-say="watched"><div class="v">watched</div><div class="p">/t/</div></div>
+<div class="card" data-say="stopped"><div class="v">stopped</div><div class="p">/t/</div></div>
+<div class="card" data-say="worked"><div class="v">worked</div><div class="p">/t/</div></div>
+<div class="card" data-say="played"><div class="v">played</div><div class="p">/d/</div></div>
+<div class="card" data-say="stayed"><div class="v">stayed</div><div class="p">/d/</div></div>
+<div class="card" data-say="called"><div class="v">called</div><div class="p">/d/</div></div>
+<div class="card" data-say="wanted"><div class="v">wanted</div><div class="p">/ɪd/</div></div>
+<div class="card" data-say="visited"><div class="v">visited</div><div class="p">/ɪd/</div></div>
+<div class="card" data-say="decided"><div class="v">decided</div><div class="p">/ɪd/</div></div>
+</div>
+</div></section>
+<section class="slide " data-name="-ed sound"><div class="wrap">
+<p class="k">Exercise 2 · Pronunciation</p>
+<h2>Which sound?</h2>
+<p class="tip">Click 🔊, listen and choose the -ed sound.</p>
+<p class="score"></p>
+<div class="q" data-speak="talked"><span class="t"><b>talked</b></span><button class="spk" data-say="talked">🔊 Listen</button><button class="o">/ɪd/</button><button class="o">/d/</button><button class="o" data-ok>/t/</button></div>
+<div class="q" data-speak="needed"><span class="t"><b>needed</b></span><button class="spk" data-say="needed">🔊 Listen</button><button class="o">/d/</button><button class="o" data-ok>/ɪd/</button><button class="o">/t/</button></div>
+<div class="q" data-speak="arrived"><span class="t"><b>arrived</b></span><button class="spk" data-say="arrived">🔊 Listen</button><button class="o">/t/</button><button class="o">/ɪd/</button><button class="o" data-ok>/d/</button></div>
+<div class="q" data-speak="walked"><span class="t"><b>walked</b></span><button class="spk" data-say="walked">🔊 Listen</button><button class="o">/d/</button><button class="o" data-ok>/t/</button><button class="o">/ɪd/</button></div>
+<div class="q" data-speak="started"><span class="t"><b>started</b></span><button class="spk" data-say="started">🔊 Listen</button><button class="o">/d/</button><button class="o">/t/</button><button class="o" data-ok>/ɪd/</button></div>
+<div class="q" data-speak="traveled"><span class="t"><b>traveled</b></span><button class="spk" data-say="traveled">🔊 Listen</button><button class="o">/t/</button><button class="o">/ɪd/</button><button class="o" data-ok>/d/</button></div>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide dark" data-name="Trip story"><div class="wrap">
+<p class="k">Exercise 3</p>
+<h2>Complete the story</h2>
+<p class="score"></p><div class="story">
+Two years 
+<div class="q"><button class="o">last</button><button class="o" data-ok>ago</button></div>
+, my friends and I 
+<div class="q"><button class="o">go</button><button class="o" data-ok>went</button></div>
+ to Porto de Galinhas. 
+<div class="q"><button class="o">Finally</button><button class="o" data-ok>First</button></div>
+, we took a bus. The trip 
+<div class="q"><button class="o">were</button><button class="o" data-ok>was</button></div>
+ long, but the views 
+<div class="q"><button class="o" data-ok>were</button><button class="o">was</button></div>
+ beautiful. 
+<div class="q"><button class="o">First</button><button class="o" data-ok>Then</button></div>
+, we swam in the natural pools. I 
+<div class="q"><button class="o">wasn&#x27;t</button><button class="o" data-ok>didn&#x27;t</button></div>
+ want to leave! 
+<div class="q"><button class="o">First</button><button class="o" data-ok>Finally</button></div>
+, we 
+<div class="q"><button class="o">comed</button><button class="o" data-ok>came</button></div>
+ back home, tired but happy.
+</div>
+<button class="listen" data-say="Two years ago, my friends and I went to Porto de Galinhas. First, we took a bus. The trip was long, but the views were beautiful. Then, we swam in the natural pools. I didn&#x27;t want to leave! Finally, we came back home, tired but happy.">🔊 Listen to the answer</button>
+<button class="reset">Try again</button>
+</div></section>
+<section class="slide accent"><div class="wrap">
+<p class="k">Speaking · 10 min</p>
+<h2>Your best trip 🗺️</h2>
+<div class="cards"><div class="box "><h3>Where did you go?</h3></div><div class="box "><h3>When was it?</h3></div><div class="box "><h3>Who did you go with?</h3></div><div class="box "><h3>What did you do there?</h3></div><div class="box "><h3>How was the food?</h3></div><div class="box "><h3>Would you go back?</h3></div></div><p>Use First, Then, After that, Finally!</p>
+</div></section>
+<section class="slide dark"><div class="wrap">
+<p class="k">Game · 5 min</p>
+<h2>Two truths and a lie: trips ✈️</h2>
+<p>Say 3 sentences about trips in your life. One is false. I will guess!</p><p class="big">Example: I went to São Paulo in 2019. I was on a plane for 12 hours once. I swam with dolphins.</p>
+</div></section>
+<section class="slide "><div class="wrap">
+<p class="k">Wrap-up</p>
+<h2>Today's summary 🎯</h2>
+<div class="cards"><div class="box "><h3>Time</h3><p>last summer · two years ago · in 2023</p></div><div class="box "><h3>Story</h3><p>First, Then, After that, Finally</p></div><div class="box "><h3>-ed</h3><p>/t/ watched · /d/ played · /ɪd/ wanted</p></div></div>
+</div></section>
+<div class="nav"><button id="prev">← Back</button><span id="num"></span><button id="next">Next →</button></div>
+<script>
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0;
+function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i)});document.getElementById('num').textContent=(i+1)+' / '+S.length;total();S[i].scrollTop=0;}
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);});
+var VOICES=[];function loadV(){try{VOICES=speechSynthesis.getVoices()||[];}catch(e){}}
+if(window.speechSynthesis){loadV();speechSynthesis.onvoiceschanged=loadV;}
+function say(t){if(!window.speechSynthesis||!t)return;try{if(speechSynthesis.speaking||speechSynthesis.pending)speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=0.85;var v=null;for(var k=0;k<VOICES.length;k++){if(VOICES[k].lang&&VOICES[k].lang.replace('_','-').indexOf('en-US')===0){v=VOICES[k];break;}}if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+[].forEach.call(document.querySelectorAll('.card'),function(c){c.onclick=function(){say(c.getAttribute('data-say'))}});
+[].forEach.call(document.querySelectorAll('button.spk,button.listen'),function(b){b.onclick=function(){say(b.getAttribute('data-say'))}});
+function score(s){var qs=s.querySelectorAll('.q'),el=s.querySelector('.score'),ok=0,done=0;[].forEach.call(qs,function(q){if(q.dataset.done){done++;if(q.dataset.done==='ok')ok++;}});if(el)el.textContent=done?('Score: '+ok+' / '+qs.length):'';}
+function gameScores(){var out=[],n=0;S.forEach(function(s){var qs=s.querySelectorAll('.q');if(!qs.length)return;n++;var ok=0;[].forEach.call(qs,function(q){if(q.dataset.done==='ok')ok++;});out.push({g:n,name:s.getAttribute('data-name')||('Game '+n),ok:ok,t:qs.length});});return out;}
+function total(){var el=document.getElementById('total');if(!el)return;var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});el.textContent=ok+' / '+t;var m=document.getElementById('msg');if(m){var r=t?ok/t:0;m.textContent=r>=0.87?'⭐ Amazing! You are a star!':r>=0.62?'⚽ Great game! Almost perfect!':r>=0.3?'👏 Good job! Practice a little more and try again!':'🚀 Play the games and come back to see your score!';}if(i===S.length-1)saveBest(ok,t);}
+var KEY=document.body.getAttribute('data-key');
+function saveBest(ok,t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');if(!d.best||ok>d.best){d.best=ok;localStorage.setItem(KEY,JSON.stringify(d));}showBest(t);}catch(e){}}
+function showBest(t){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');var el=document.getElementById('best');if(el&&d.best)el.textContent='🏅 Your best score: '+d.best+(t?' / '+t:'');}catch(e){}}
+var TEACHER_PHONE=''; // WhatsApp da professora (opcional): só números, ex: 5583999999999
+var sendB=document.getElementById('send');
+if(sendB)sendB.onclick=function(){var gs=gameScores(),ok=0,t=0;gs.forEach(function(x){ok+=x.ok;t+=x.t;});var st=document.body.getAttribute('data-student')||'';var txt='📚 '+(st?st+' | ':'')+document.title+'\n'+gs.map(function(x){return x.name+': '+x.ok+'/'+x.t}).join('\n')+'\nTotal: '+ok+'/'+t+' ✅';location.href='https://wa.me/'+TEACHER_PHONE+'?text='+encodeURIComponent(txt);};
+[].forEach.call(document.querySelectorAll('.q'),function(q){[].forEach.call(q.querySelectorAll('button.o'),function(b){b.onclick=function(){
+  var right=b.hasAttribute('data-ok');b.classList.add(right?'ok':'bad');
+  if(!q.dataset.done)q.dataset.done=right?'ok':'bad';
+  if(right){[].forEach.call(q.querySelectorAll('button.o'),function(x){x.disabled=true});say(q.getAttribute('data-speak'));}
+  score(q.closest('.slide'));}})});
+[].forEach.call(document.querySelectorAll('.reset'),function(r){r.onclick=function(){var s=r.closest('.slide');[].forEach.call(s.querySelectorAll('.q'),function(q){delete q.dataset.done;[].forEach.call(q.querySelectorAll('button.o'),function(b){b.classList.remove('ok','bad');b.disabled=false;});});score(s);}});
+show(0);
+</script>
+</body>
+</html>
