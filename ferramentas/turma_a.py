@@ -7,6 +7,46 @@ ST = ""
 def B(x): return f'<p class="big">{x}</p>'
 def P(x): return f'<p>{x}</p>'
 
+def model(read, frame):
+    return ('<div class="cards"><div class="box"><p class="k">📖 Read</p>' + "".join(f'<p class="big">{r}</p>' for r in read) +
+            f'</div><div class="box good"><p class="k">✍️ Your turn</p><p class="big">{frame}</p></div></div>')
+def hw(items): return {"cls": "dark", "k": "Homework 📝", "h": "Your mission this week", "html": boxes([f"<h3>{a}</h3><p>{b}</p>" for a, b in items])}
+def bonus(h, d): x = {"cls": "accent", "k": "Extra time? ⭐ Bonus", "h": h}; x.update(d); return x
+GAMES = ("📱 Games", "Play the games on your phone. The link is on WhatsApp. Send your score!")
+EXTRA = {
+ "2026-11-24-verbs-actions": [hw([GAMES, ("🎭 Mime with mom", "Do 5 actions in mime. Mom guesses. Then you say the verb in English!")]),
+    bonus("Odd one out! 🕵️", {"name": "Bonus", "tip": "Click the word that is NOT a verb. Then play Simon says: do the action only if I say \"Simon says\"!",
+      "qs": [{"o": ["run", "jump", "table", "eat"], "okidx": 2, "speak": False}, {"o": ["pizza", "kick", "swim", "dance"], "okidx": 0, "speak": False},
+             {"o": ["sleep", "drink", "laugh", "blue"], "okidx": 3, "speak": False}, {"o": ["watch", "happy", "play", "go"], "okidx": 1, "speak": False}]})],
+ "2026-12-01-was-were": [hw([GAMES]),
+    bonus("Emoji riddles 🧩", {"name": "Bonus", "tip": "Look at the emojis. Which sentence is correct?",
+      "qs": [{"t": "⚽🏟️😃", "o": ["They were at the stadium. They were happy.", "They was at the stadium. They was happy.", "They were at the beach. They were sad."]},
+             {"t": "🏠😴", "o": ["I was at home. I was tired.", "I were at home. I were tired.", "I was at school. I was hungry."]},
+             {"t": "🏖️☀️🥵", "o": ["It was hot at the beach.", "It were hot at the beach.", "It was cold at the beach."]},
+             {"t": "👦👧🍕😋", "o": ["My friends were hungry.", "My friends was hungry.", "My friends were angry."]}]})],
+ "2026-12-08-new-verbs": [hw([GAMES, ("🎙️ Audio for the teacher", "30 seconds: 3 things you did last weekend. I ate... I bought... I slept...")]),
+    bonus("Emoji past 🎮", {"name": "Bonus", "tip": "Look at the emojis and choose the verb.",
+      "qs": [{"t": "🛒🎮 I ___ a new game.", "o": ["bought", "buyed", "took"]}, {"t": "🧃 She ___ orange juice.", "o": ["drank", "drinked", "made"]},
+             {"t": "😴🛏️ He ___ for ten hours!", "o": ["slept", "sleeped", "got"]}, {"t": "🎂 My mom ___ a cake.", "o": ["made", "maked", "gave"]},
+             {"t": "🎁 I ___ a present to my friend.", "o": ["gave", "gived", "came"]}]})],
+ "2026-12-15-did-you": [hw([GAMES]),
+    bonus("Emoji answers ✅❌", {"name": "Bonus", "tip": "Look at the emoji and answer!",
+      "qs": [{"t": "Did you play football? ✅⚽", "o": ["Yes, I did.", "No, I didn't.", "Yes, I do."]},
+             {"t": "Did you eat sushi? ❌🍣", "o": ["No, I didn't.", "Yes, I did.", "No, I don't."]},
+             {"t": "Did you watch anime? ✅📺", "o": ["Yes, I did.", "No, I didn't.", "Yes, I watched did."]},
+             {"t": "Did you go to the beach? ❌🏖️", "o": ["No, I didn't.", "Yes, I did.", "No, I wasn't."]},
+             {"t": "🎮 ➜ Make the question", "o": ["Did you play video games?", "Did you played video games?", "You did play video games?"]}]})],
+ "2026-12-22-final-match": [hw([("📱 Vacation challenge", "1 round per week, 10 minutes."), ("📸🎙️ Vacation audio", "Once a week: send me a photo of something you did + 1 sentence. I went to the beach!")]),
+    bonus("Penalty shootout! ⚽", {"html": P("I say a verb. You have 5 seconds to say the past. Correct = GOAL! Then you say a verb and I take the penalty.") +
+      boxes([B("go"), B("eat"), B("buy"), B("sleep"), B("win"), B("see"), B("make"), B("drink"), B("take"), B("play")])})],
+}
+_page = page
+def page(title, st, key, slides, path):
+    for k, extra in EXTRA.items():
+        if f"/{k}/aula/" in path:
+            slides = slides + extra
+    _page(title, st, key, slides, path)
+
 PAST1 = [("play", "played"), ("watch", "watched"), ("kick", "kicked"), ("score", "scored"),
          ("go", "went"), ("see", "saw"), ("win", "won"), ("eat", "ate")]
 NEW = [("make", "made"), ("get", "got"), ("come", "came"), ("take", "took"),
@@ -40,7 +80,7 @@ page("Verbs = Actions! (aula)", ST, "aula:" + d, [
         "<h3>Which game was difficult?</h3>", "<h3>What did you do on the weekend?</h3>"])},
     {"k": "What is a verb?", "h": "A verb is an ACTION", "html":
         boxes([B("🏃 run"), B("⚽ kick"), B("🍕 eat"), B("📺 watch")]) +
-        B("Test: Can you DO it? ➜ Then it is a verb! ✅") + P("ball ⚽ ➜ Can you ball? ❌ ➜ Not a verb.")},
+        B("Test: Can you DO it? ➜ Then it is a verb! ✅") + P("ball ⚽ ➜ Can you ball? ❌ ➜ Not a verb.") + model(["I <b>run</b> in the park.", "My friends <b>play</b> video games."], "I ______ every day. 🏃")},
     {"cls": "accent", "k": "Mime game · 5 min", "h": "Show me the action! 🎭", "html":
         P("I say a verb, you do the action. Then you say a verb and I do it!") +
         boxes([B("run"), B("jump"), B("sleep"), B("kick"), B("swim"), B("dance"), B("drink"), B("laugh")])},
@@ -97,11 +137,11 @@ page("Was / Were (aula)", ST, "aula:" + d, [
         '<table><tr><th>Now</th><th>Past</th></tr><tr><td>I am</td><td><b>I was</b></td></tr>'
         '<tr><td>he / she / it is</td><td><b>he / she / it was</b></td></tr>'
         '<tr><td>you / we / they are</td><td><b>you / we / they were</b></td></tr></table>' +
-        B("I was at home. 🏠 They were at the stadium. 🏟️")},
+        model(["Yesterday I <b>was</b> at home. 🏠", "My friends <b>were</b> at school. 🏫"], "Yesterday at 8 pm, I was ______.")},
     {"k": "Exercise 1", "name": "was or were", "h": "was or were?", "qs": ww},
     {"cls": "dark", "k": "Negative", "h": "wasn't / weren't", "html":
         boxes([B("was not ➜ <b>wasn't</b>"), B("were not ➜ <b>weren't</b>")]) +
-        B("The game wasn't boring. The players weren't tired.")},
+        model(["The game <b>wasn't</b> boring.", "The players <b>weren't</b> tired."], "Yesterday I wasn't ______.")},
     {"k": "Exercise 2", "name": "Which is correct", "h": "Which sentence is correct?", "pre": wrong_right(["They <b>was</b> happy."], ["They <b>were</b> happy."]),
      "qs": [{"o": ["He wasn't at home.", "He weren't at home."]}, {"o": ["We weren't tired.", "We wasn't tired."]},
             {"o": ["The movie wasn't good.", "The movie weren't good."]}, {"o": ["You were at the park.", "You was at the park."]},
@@ -156,8 +196,8 @@ page("Level Up: New Verbs (aula)", ST, "aula:" + d, [
     {"k": "Warm-up · 5 min", "h": "was or were?", "html": boxes([
         "<h3>Where were you on Saturday?</h3>", "<h3>Was the homework easy?</h3>", "<h3>Were you tired today?</h3>"])},
     {"k": "Time words", "h": "When? ⏰", "html": boxes([B("yesterday"), B("last night"), B("last week"), B("last Saturday"), B("two days ago")]) +
-        B("I played football <b>yesterday</b>. We watched a movie <b>two days ago</b>.")},
-    {"cls": "dark", "k": "New verbs", "h": "8 new irregular verbs", "cards": NEW},
+        model(["I played football <b>yesterday</b>.", "We watched a movie <b>two days ago</b>."], "Last week, I ______.")},
+    {"cls": "dark", "k": "New verbs", "h": "8 new irregular verbs", "cards": NEW, "html": model(["Yesterday I <b>drank</b> juice.", "Last week I <b>bought</b> a ball."], "Last weekend I ______. (made / got / bought...)")},
     {"k": "Exercise 1", "name": "Choose the past", "h": "Choose the past form",
      "qs": [{"t": "make", "o": ["made", "maked", "makes"]}, {"t": "get", "o": ["got", "getted", "gets"]},
             {"t": "come", "o": ["came", "comed", "comes"]}, {"t": "take", "o": ["took", "taked", "takes"]},
@@ -215,7 +255,7 @@ page("Did you score? (aula)", ST, "aula:" + d, [
                                                                 ("play", "played"), ("see", "saw"), ("drink", "drank"), ("make", "made")]},
     {"k": "New!", "h": "Did + you + verb?", "pre": wrong_right(["Did you <b>played</b>?"], ["Did you <b>play</b>?"]), "html":
         boxes([B("Did you play football?") + P("✅ Yes, I did."), B("Did you watch anime?") + P("❌ No, I didn't.")]) +
-        B("After <b>did</b>, the verb goes back to normal!")},
+        B("After <b>did</b>, the verb goes back to normal!") + model(["<b>Did</b> you <b>watch</b> anime yesterday? Yes, I did."], "Did you ______ yesterday? 🤔")},
     {"cls": "dark", "k": "Exercise 1", "name": "Correct question", "h": "Which question is correct?",
      "qs": [{"o": ["Did you play video games?", "Did you played video games?"]}, {"o": ["Did you eat pizza?", "Did you ate pizza?"]},
             {"o": ["Did you go to school?", "Did you went to school?"]}, {"o": ["Did you sleep well?", "Did you slept well?"]},

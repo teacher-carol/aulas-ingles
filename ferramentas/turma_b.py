@@ -8,6 +8,39 @@ ST = ""
 SHOW = "Record your audio mission and send it to me too! 🎙️"
 def B(x): return f'<p class="big">{x}</p>'
 def P(x): return f'<p>{x}</p>'
+
+def model(read, frame):
+    return ('<div class="cards"><div class="box"><p class="k">📖 Read</p>' + "".join(f'<p class="big">{r}</p>' for r in read) +
+            f'</div><div class="box good"><p class="k">✍️ Your turn</p><p class="big">{frame}</p></div></div>')
+def hw(items): return {"cls": "dark", "k": "Homework 📝", "h": "Your homework this week", "html": boxes([f"<h3>{a}</h3><p>{b}</p>" for a, b in items])}
+def bonus(h, html): return {"cls": "accent", "k": "Extra time? ⭐ Bonus", "h": h, "html": html}
+GAMES = lambda topic: ("📱 Games + 🎙️ audio", f"Play the 4 games and record the 1-minute audio: {topic}. The link is on WhatsApp.")
+EXTRA = {
+ "2026-11-24-past-simple": [hw([GAMES("your last weekend"), ("✍️ Writing", "My detox day: 6 to 8 sentences. What did you do? How did you feel? Use 3 irregular verbs. Send it on WhatsApp.")]),
+    bonus("The alibi game 🕵️", P("Something strange happened last Saturday at 8 pm, and you are a suspect! Tell me your alibi.") + boxes([
+        "<h3>Where were you?</h3>", "<h3>Who were you with?</h3>", "<h3>What did you eat?</h3>", "<h3>What time did you go home?</h3>", "<h3>What did you wear?</h3>"]) +
+        P("Then I ask again, faster. If your answers change... you are guilty! 😄 Then we switch."))],
+ "2026-12-01-travel-stories": [hw([GAMES("your best trip")]),
+    bonus("Story chain 🔗", P("We tell one travel story together. One sentence each. Use one word from the list and a connector: First, Then, After that, Suddenly, Finally.") +
+        boxes([B("suitcase"), B("monkey"), B("rain"), B("passport"), B("taxi"), B("ice cream"), B("the wrong bus"), B("lost")]) +
+        model(["First, I packed my suitcase. Suddenly, it started to rain!"], "Then, ______."))],
+ "2026-12-08-have-you-ever": [hw([GAMES("your life experiences"), ("✍️ Writing", "An experience I'll never forget: 60 to 80 words. Start with I have... and tell the details in the past simple. Send it on WhatsApp.")]),
+    bonus("The fingers game ✋", P("We both start with 5 fingers up. Say: I have never... If the other person HAS done it, they put one finger down and say when.") +
+        model(["I have never eaten sushi.", "➜ I have! I ate it in 2023. (one finger down)"], "I have never ______.") + P("Who has no fingers up first, loses!"))],
+ "2026-12-15-plans-goals": [hw([GAMES("your goals for 2027")]),
+    bonus("Fortune teller 🔮", P("Predict my future! Then I predict yours.") + boxes([B("💼 job"), B("🏠 home"), B("✈️ travel"), B("🐱 pets"), B("🎸 hobby")]) +
+        model(["In 2030, you will live by the beach. I think you'll have three cats!"], "In 2030, you will ______. I think you'll ______."))],
+ "2026-12-22-final-review": [hw([("📱 Vacation challenge", "1 round per week + 1 audio per week."), ("✍️ Writing", "My year in English: 80 to 100 words. What did you learn? What are you going to learn in 2027? Send it on WhatsApp.")]),
+    bonus("Taboo 🤐", P("Describe the word without saying it. I have to guess!") +
+        boxes([B("screen time"), B("notification"), B("detox"), B("passport"), B("souvenir"), B("goal"), B("airport"), B("give up")]) +
+        model(["It's a thing that... · It's when you... · You use it to..."], "It's a place where you ______."))],
+}
+_page = page
+def page(title, st, key, slides, path):
+    for k, extra in EXTRA.items():
+        if f"/{k}/aula/" in path:
+            slides = slides + extra
+    _page(title, st, key, slides, path)
 def intro(k, h, extra=""):
     return {"cls": "dark", "k": k, "h": h, "h1": True, "html":
             P("1. Listen to the words and repeat out loud.") + P("2. Play the 4 games.") +
@@ -46,8 +79,8 @@ page("How was your detox? (aula)", ST, "aula:b:" + d, [
         '<tr><td>use</td><td><b>used</b></td><td>+ d</td></tr>'
         '<tr><td>stop</td><td><b>stopped</b></td><td>double the consonant</td></tr>'
         '<tr><td>try</td><td><b>tried</b></td><td>consonant + y ➜ ied</td></tr>'
-        '<tr><td>play</td><td><b>played</b></td><td>vowel + y ➜ yed</td></tr></table>'},
-    {"cls": "dark", "k": "Irregular verbs", "h": "Irregular verbs: no rule, just practice!", "cards": IRR},
+        '<tr><td>play</td><td><b>played</b></td><td>vowel + y ➜ yed</td></tr></table>' + model(["Last night I <b>checked</b> my messages and <b>stopped</b> at 11 pm.", "I <b>tried</b> to sleep early."], "Yesterday I ______ and I ______.")},
+    {"cls": "dark", "k": "Irregular verbs", "h": "Irregular verbs: no rule, just practice!", "cards": IRR, "html": model(["I <b>left</b> my phone at home and I <b>felt</b> free!"], "Last Sunday I ______. (went / had / spent...)")},
     {"k": "Exercise 1", "name": "Choose the past", "h": "Choose the past form",
      "qs": [{"t": "try", "o": ["tried", "tryed", "trid"]}, {"t": "stop", "o": ["stopped", "stoped", "stopt"]},
             {"t": "feel", "o": ["felt", "feeled", "fell"]}, {"t": "spend", "o": ["spent", "spended", "spend"]},
@@ -56,7 +89,7 @@ page("How was your detox? (aula)", ST, "aula:b:" + d, [
     {"cls": "dark", "k": "Negatives and questions", "h": "After DID / DIDN'T, use the base verb",
      "pre": wrong_right(["I didn't <b>used</b> my phone.", "Did you <b>felt</b> better?"],
                         ["I didn't <b>use</b> my phone.", "Did you <b>feel</b> better?"]),
-     "html": B("Where <b>did</b> you <b>go</b>? ➜ I <b>went</b> to the park.")},
+     "html": B("Where <b>did</b> you <b>go</b>? ➜ I <b>went</b> to the park.") + model(["I <b>didn't use</b> my phone at lunch.", "<b>Did</b> you <b>sleep</b> well?"], "Last weekend I didn't ______.<br>Did you ______?")},
     {"k": "Exercise 2", "name": "Which is correct", "h": "Which sentence is correct?",
      "qs": [{"o": ["I didn't check Instagram.", "I didn't checked Instagram.", "I not checked Instagram."]},
             {"o": ["Did you sleep well?", "Did you slept well?", "You did sleep well?"]},
@@ -127,7 +160,7 @@ page("Travel stories (aula)", ST, "aula:b:" + d, [
         '<table><tr><th></th><th>Past of be</th></tr><tr><td>I / he / she / it</td><td><b>was</b> / wasn\'t</td></tr>'
         '<tr><td>you / we / they</td><td><b>were</b> / weren\'t</td></tr></table>' +
         boxes([B("<b>last</b> summer / last year"), B("two years <b>ago</b>"), B("<b>in</b> 2023 / <b>in</b> July")]) +
-        P("⚠️ Not: <s>in last year</s> · <s>ago two years</s>")},
+        P("⚠️ Not: <s>in last year</s> · <s>ago two years</s>") + model(["Two years <b>ago</b>, I <b>went</b> to Natal. It <b>was</b> hot!"], "______ ago, I went to ______. It was ______.")},
     {"cls": "dark", "k": "Exercise 1", "name": "Time words", "h": "last, ago or in?",
      "qs": [{"t": "I went to Recife three years ___.", "o": ["ago", "last", "in"]},
             {"t": "We traveled ___ summer.", "o": ["last", "ago", "in"]},
@@ -136,7 +169,7 @@ page("Travel stories (aula)", ST, "aula:b:" + d, [
             {"t": "The hotels ___ very expensive.", "o": ["were", "was", "did"]},
             {"t": "I ___ at home last weekend.", "o": ["wasn't", "weren't", "didn't"]}]},
     {"k": "Tell a story", "h": "Connect your story 🔗", "html": boxes([B("First, ..."), B("Then, ..."), B("After that, ..."), B("Finally, ...")]) +
-        P("First, we took a bus. Then, we checked in at the hotel. After that, we went to the beach. Finally, we had dinner by the sea.")},
+        model(["First, we took a bus. Then, we checked in at the hotel.", "After that, we went to the beach. Finally, we had dinner by the sea."], "First, I ______. Then, I ______. Finally, I ______.")},
     {"cls": "dark", "k": "Pronunciation", "h": "The -ed sound 👂", "cards": ED, "html":
         P("<b>/t/</b> after p, k, s, sh, ch · <b>/d/</b> after most other sounds · <b>/ɪd/</b> after t or d (an extra syllable!)")},
     {"k": "Exercise 2 · Pronunciation", "name": "-ed sound", "h": "Which sound?", "tip": "Click 🔊, listen and choose the -ed sound.",
@@ -203,7 +236,7 @@ page("Have you ever...? (aula)", ST, "aula:b:" + d, [
     {"k": "Grammar", "h": "have / has + past participle", "html":
         boxes([B("I <b>have been</b> to Recife."), B("She <b>has eaten</b> sushi."), B("I <b>have never</b> flown.")]) +
         boxes([B("<b>Have</b> you <b>ever</b> tried tapioca?") + P("✅ Yes, I have. · ❌ No, I haven't. / No, never.")]) +
-        P("We use it for <b>experiences in your life</b>, when the time is not important.")},
+        P("We use it for <b>experiences in your life</b>, when the time is not important.") + model(["I <b>have been</b> to Recife, but I <b>have never been</b> to São Paulo."], "I have ______. I have never ______.")},
     {"cls": "dark", "k": "Past participles", "h": "Verb ➜ participle", "cards": PP},
     {"k": "Exercise 1", "name": "Participle", "h": "Choose the participle",
      "qs": [{"t": "Have you ever ___ a famous person? (meet)", "o": ["met", "meeted", "meet"]},
@@ -215,7 +248,7 @@ page("Have you ever...? (aula)", ST, "aula:b:" + d, [
     {"cls": "dark", "k": "The big rule", "h": "Finished time ➜ past simple", "pre":
         wrong_right(["I <b>have been</b> to Recife <b>last year</b>."], ["I <b>went</b> to Recife <b>last year</b>."]),
      "html": B("Have you ever been to Recife? ➜ Yes, I have! ➜ When <b>did</b> you <b>go</b>? ➜ I <b>went</b> in 2023.") +
-        P("yesterday · last year · in 2023 · two days ago ➜ <b>past simple</b>")},
+        P("yesterday · last year · in 2023 · two days ago ➜ <b>past simple</b>") + model(["I <b>have tried</b> açaí. I <b>tried</b> it last summer."], "I have ______. I ______ it last ______.")},
     {"k": "Exercise 2", "name": "Perfect or past", "h": "Present perfect or past simple?",
      "qs": [{"o": ["I have tried sushi.", "I have tried sushi last week."]},
             {"o": ["She went to Rio in 2020.", "She has gone to Rio in 2020."]},
@@ -284,11 +317,11 @@ page("Plans and goals (aula)", ST, "aula:b:" + d, [
         "<h3>Tell me one thing you have never done.</h3>", "<h3>Is there something you want to try one day?</h3>",
         "<h3>What are you going to do this weekend?</h3>"])},
     {"k": "Grammar", "h": "going to or will?", "cards": FUT, "html":
-        boxes([B("<b>going to</b> = a plan you already decided"), B("<b>will</b> = a decision NOW, a prediction or a promise")])},
+        boxes([B("<b>going to</b> = a plan you already decided"), B("<b>will</b> = a decision NOW, a prediction or a promise")]) + model(["I'm going to visit my grandparents in January.", "I think it will be a great year."], "Next month, I'm going to ______. I think I'll ______.")},
     {"cls": "dark", "k": "Form", "h": "Be careful with the form!", "pre":
         wrong_right(["I <b>going to</b> travel.", "I <b>will to</b> study.", "She <b>wills</b> help."],
                     ["I<b>'m going to</b> travel.", "I <b>will</b> study.", "She <b>will</b> help."]),
-     "html": B("Negative: I'm <b>not</b> going to... · I <b>won't</b>...")},
+     "html": B("Negative: I'm <b>not</b> going to... · I <b>won't</b>...") + model(["I'm not going to stay up late. I won't forget!"], "I'm not going to ______. I won't ______.")},
     {"k": "Exercise 1", "name": "going to or will", "h": "going to or will?",
      "qs": [{"t": "I bought the tickets. I ___ visit my aunt in January.", "o": ["am going to", "will"]},
             {"t": "The phone is ringing! I ___ answer it.", "o": ["'ll", "am going to"]},
