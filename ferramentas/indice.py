@@ -18,11 +18,11 @@ for pasta, nome, sub in TURMAS:
     if not os.path.isdir(base):
         continue
     linhas = []
-    for d in sorted(os.listdir(base)):
+    for d in sorted(os.listdir(base), key=lambda x: (x.startswith('extra-'), x)):
         m = re.match(r"(\d{4})-(\d{2})-(\d{2})-", d)
-        if not m:
+        extra = d.startswith("extra-")
+        if not m and not extra:
             continue
-        y, mo, dd = m.groups()
         tem_aula = os.path.exists(os.path.join(base, d, "aula", "index.html"))
         tem_tarefa = os.path.exists(os.path.join(base, d, "index.html"))
         tema = titulo(os.path.join(base, d, "aula", "index.html")) if tem_aula else titulo(os.path.join(base, d, "index.html"))
@@ -31,7 +31,12 @@ for pasta, nome, sub in TURMAS:
             bt += f'<a class="b aula" href="../{pasta}/{d}/aula/">📺 Aula</a>'
         if tem_tarefa:
             bt += f'<a class="b tarefa" href="../{pasta}/{d}/">📝 Tarefa</a>'
-        linhas.append(f'<li><div class="dt"><b>{int(dd)}</b><span>{MESES[int(mo)-1]} {y}</span></div>'
+        if extra:
+            dt = '<div class="dt"><b>⭐</b><span>extra</span></div>'
+        else:
+            y, mo, dd = m.groups()
+            dt = f'<div class="dt"><b>{int(dd)}</b><span>{MESES[int(mo)-1]} {y}</span></div>'
+        linhas.append(f'<li>{dt}'
                       f'<div class="tm">{html.escape(tema)}</div><div class="bts">{bt}</div></li>')
     secoes.append(f'<section><h2>{nome}</h2><p class="sub">{sub} · {len(linhas)} aulas</p><ul>{"".join(linhas)}</ul></section>')
 
