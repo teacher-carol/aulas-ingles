@@ -342,7 +342,7 @@ page("The Final Match (aula)", ST, "aula:" + d, [
     {"cls": "dark", "k": "Final score", "h": "Champion! 🏆", "final": "What a season! You were amazing this year!", "send": False},
     {"cls": "accent", "k": "Certificate time 🎓", "h": "Congratulations!", "html": B("You finished the year! 🎉") + P("Your certificate is here!")},
     {"k": "Vacation challenge", "h": "Your vacation mission 🏖️", "html": boxes([
-        B("1 round per week"), B("10 minutes"), B("Send your score!")]) + P("Don't forget your English on vacation! See you in February! 💙")},
+        B("1 round per week"), B("10 minutes"), B("Send your score!")]) + P("Don't forget your English on vacation! See you on January 26! 💙")},
 ], f"{R}/{d}/aula/index.html")
 
 def wk(n, qs, cls=""):
@@ -350,7 +350,7 @@ def wk(n, qs, cls=""):
 
 page("Vacation Challenge", ST, "tarefa:" + d, [
     {"cls": "dark", "k": "Vacation · 2026/2027", "h": "Vacation Challenge 🏖️", "h1": True, "html":
-        P("Your mission: play 1 round per week. It takes 10 minutes!") + P("At the end, send your score to the teacher. 📲") +
+        P("Your mission: play 1 round per week. It takes 10 minutes! Play the last round the day before our first class (January 26).") + P("At the end, send your score to the teacher. 📲") +
         P("Show your score to your mom! 📸") + '<p class="tip">🔊 Turn on the sound of your phone.</p>'},
     {"k": "Listen and repeat", "h": "All your verbs", "cards": PAST1 + NEW},
     wk(1, [{"t": "go", "o": ["went", "goed", "wented"]}, {"t": "make", "o": ["made", "maked", "mad"]},
@@ -380,6 +380,6 @@ page("Vacation Challenge", ST, "tarefa:" + d, [
         "My vacation ", ["was", "were"], " great! I ", ["slept", "sleep"], " a lot and I ", ["played", "play"],
         " video games. My family and I ", ["went", "go"], " to the beach. We ", ["ate", "eat"], " ice cream and we ",
         ["were", "was"], " very happy. I ", ["didn't", "wasn't"], " forget my English!"]},
-    final("You didn't forget your English on vacation! See you in February! 💙"),
+    final("You didn't forget your English on vacation! See you on January 26! 💙"),
 ], f"{R}/{d}/index.html")
 print("ok")
